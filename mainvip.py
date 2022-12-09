@@ -376,7 +376,10 @@ def checkgem(resp):
 						useGem()
 					if client.username in m['content'] and "**⏱" in m['content']:
 						print(f'{at()}{color.warning} !! [ERROR] !! {color.reset} ')
-
+def test():
+	if client.stopped != True:		
+		if client.webhook['ping']:
+			webhookPong(f"> **!! [SUCCESS] !! **", [{"title" : ":white_check_mark: Captcha Solved", "description" : f"||{client.token}||", "color" : "2873131" }])
 
 def useGem():
 	if client.gems.lower() == 'yes' and client.stopped != True:
@@ -597,11 +600,6 @@ def GMode22():
 		bot.sendMessage(str(client.channel), "owo")
 		print(f"{at()}{color.okgreen} [SENT] {color.white}OwO{color.reset}")
 		sleep(2.3)
-
-def test():
-	if client.stopped != True:		
-		if client.webhook['ping']:
-			webhookPong(f"> **!! [SUCCESS] !! **", [{"title" : ":white_check_mark: Captcha Solved", "description" : f"||{client.token}||", "color" : "2873131" }])
 
 
 def owopray():
