@@ -56,7 +56,7 @@ signal(SIGINT, signal_handler)
 while True:
 	system('cls' if name == 'nt' else 'clear')
 	try:
-		choice = inputimeout(prompt=f'{color.okcyan}Enter Your Choice: {color.okgreen}', timeout=1)
+		choice = inputimeout(prompt=f'{color.okcyan}Hello... {color.okgreen}', timeout=1)
 	except TimeoutOccurred:
 		choice = "1"
 	if choice == "1":
