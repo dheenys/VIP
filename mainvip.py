@@ -2,6 +2,7 @@ import base64
 import requests
 from colorama import init
 from requests import get,post
+from keep_alive import keep_alive
 init()
 import os, sys
 from os import execl, name, system
@@ -53,6 +54,7 @@ def restart() -> None:
 	os.execv(sys.executable, ['python3'] + sys.argv)
 signal(SIGINT, signal_handler)
 
+keep_alive()
 while True:
 	system('cls' if name == 'nt' else 'clear')
 	try:
@@ -105,6 +107,7 @@ def getMessagess(num: int=1, channel: str=client.channel) -> object:
 			retries = 0
 	return messageObject
 
+keep_alive()
 @bot.gateway.command
 def on_ready(resp):
 	if resp.event.ready_supplemental:  # ready_supplemental is sent after ready
