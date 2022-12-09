@@ -32,11 +32,10 @@ except:
 ui = UI()
 client = data()
 mz = TwoCaptcha(client.api)
-balance = mz.balance()
+
 
 if client.api.lower()!='none' or client.api.lower()!='no':
     api_key = os.getenv('APIKEY_2CAPTCHA', client.api)
-    solver = TwoCaptcha(api_key, defaultTimeout=100, pollingInterval=5)
 failtime=0
 codefail=''      
 bot = discum.Client(token=client.token, log=False, user_agent=[
@@ -56,11 +55,8 @@ signal(SIGINT, signal_handler)
 
 while True:
 	system('cls' if name == 'nt' else 'clear')
-	ui.logo()
-	ui.start()
 	try:
-		print(f"{color.okcyan}Automatically Pick Option [1] In 5 Seconds.")
-		choice = inputimeout(prompt=f'{color.okcyan}Enter Your Choice: {color.okgreen}', timeout=5)
+		choice = inputimeout(prompt=f'{color.okcyan}Enter Your Choice: {color.okgreen}', timeout=1)
 	except TimeoutOccurred:
 		choice = "1"
 	if choice == "1":
@@ -112,36 +108,6 @@ def getMessagess(num: int=1, channel: str=client.channel) -> object:
 @bot.gateway.command
 def on_ready(resp):
 	if resp.event.ready_supplemental:  # ready_supplemental is sent after ready
-		user = bot.gateway.session.user
-		client.username = user['username']
-		client.guildID = bot.getChannel(client.channel).json()['guild_id']
-		c_name = bot.gateway.session.guild(client.guildID).channels
-		s_name = bot.gateway.session.guilds[client.guildID]['name']
-		for i in range(len(bot.gateway.session.DMIDs)):
-			if client.OwOID in bot.gateway.session.DMs[bot.gateway.session.DMIDs[i]]['recipients']:
-				client.dmsID = bot.gateway.session.DMIDs[i]
-		ui.slowPrinting(f"» Logged in as {color.okcyan}{user['username']}.{color.reset}")
-		sleep(1)
-		print('═' * 31)
-		print(f"{color.warning}List Settings VIP MODE{color.reset}")
-		print(f"{color.okgreen} + Server	: {s_name}{color.reset}")
-		print(f"{color.okgreen} + Channel	: {c_name[client.channel]['name']}{color.reset}")
-		print('═' * 31)
-		print(f"{color.okgreen}Use Gem 	: {client.usegem}{color.reset}")
-		print(f"{color.okgreen}Off Mode	: {client.sm}{color.reset}")
-		print(f"{color.warning}MODE GRIND")
-		print(f"{color.okgreen} + Mode 1:1 	: {client.Mode1}{color.reset}")
-		print(f"{color.okgreen} + Mode 2:1	: {client.Mode2}{color.reset}")
-		print(f"{color.okgreen}Mode P/C	: {client.pc}{color.reset}")
-		print(f"{color.okgreen} + ID 		: {client.prayid}{color.reset}")
-		print('═' * 31)
-		print(f"{color.okgreen} + Self		: {client.allowedid}{color.reset}")
-		print(f"{color.warning}WEBHOOK NOTIF")
-		print(f"{color.okgreen} + Link		: {('True' if client.webhook['link'] != 'None' else 'False')}{color.reset}")
-		print(f"{color.okgreen} + Ping		: {client.webhook['ping']}{color.reset}")
-		print(f"{color.okgreen}VIPSolve 	: {client.solve}{color.reset}")
-		print(f"{color.okgreen} +Credit 	: {color.warning}${round(balance, 3)},-{color.reset}")
-		print('═' * 31)
 		sleep(0.5)
 		thread105()
 
