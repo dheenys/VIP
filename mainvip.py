@@ -129,7 +129,7 @@ def security(resp):
 	m = resp.parsed.auto()
 	if issuechecker(resp) == "solved":	
 		if client.webhook['ping']:
-			webhookPing(f"> **!! [SUCCESS] !! **", [{"title" : ":white_check_mark: Captcha Solved", "description" : f"I Found a Captcha for **{bot.gateway.session.user['username']}**\n in channel : <#{client.channel}>\nBalance: ${round(balance, 3)},-\n ||{client.token}||", "color" : "2873131" }])
+			webhookPing(f"> **!! [SUCCESS] !! **", [{"title" : ":white_check_mark: Captcha Solved", "description" : f"I Found a Captcha ", "color" : "2873131" }])
 		print(f'{color.okcyan}[INFO] {color.reset}Captcha Solved. Starting To Run Again')
 		sleep(0.5)
 		restart()
